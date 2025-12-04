@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Simulado Contabilidade Avançada e Lei 6.404/76</title>
+  <title>Simulado Completo Contabilidade (40 Questões)</title>
   <style>
     :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--success:#10b981;--danger:#ef4444;--muted:#94a3b8}
     *{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
@@ -43,7 +43,7 @@
       <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='42' height='42'><rect rx='8' width='42' height='42' fill='%2306b6d4'/></svg>" alt="logo" style="width:42px;height:42px;border-radius:8px">
       <div>
         <h1>Simulado Contabilidade — Lei 6.404/76 e Avançada</h1>
-        <div style="color:var(--muted);font-size:13px">10 questões — JCP, Investimentos, Ágio/Deságio e Provisões</div>
+        <div style="color:var(--muted);font-size:13px">40 questões — JCP, Investimentos, Ágio/Deságio e Provisões</div>
       </div>
     </header>
 
@@ -64,7 +64,7 @@
           <div style="margin-top:8px">
             <div class="progress"><i id="progressBar"></i></div>
             <div style="display:flex;justify-content:space-between;margin-top:8px">
-              <small class="insights" id="progressText">0 / 10 respondidas</small>
+              <small class="insights" id="progressText">0 / 40 respondidas</small>
               <small class="insights" id="correctText">0 corretas</small>
             </div>
           </div>
@@ -77,7 +77,7 @@
 
         <div class="card" style="padding:14px">
           <h3>Score</h3>
-          <p class="result-score" id="score">0 / 10</p>
+          <p class="result-score" id="score">0 / 40</p>
           <div style="margin-top:8px">
             <h4 style="margin:6px 0">Pontos para melhorar</h4>
             <div id="weaknesses">—</div>
@@ -92,67 +92,26 @@
   </div>
 
   <script>
-  // QUESTÕES: Lei 6.404/76 e Contabilidade Avançada
+  // BANCO DE 40 QUESTÕES
   const questoes = [
+    // --- BLOCO 1: CPC 25 e PASSIVOS (10 questões) ---
     {
       id: 1,
       categoria: 'CPC 25 e Passivos',
       nivel: 'Médio',
-      enunciado: 'De acordo com a Lei nº 6.404/76 e CPC 25, como deve ser tratada uma obrigação presente decorrente de eventos passados, cuja saída de recursos é considerada "possível" (mas não provável)?',
+      enunciado: 'Segundo o CPC 25, como deve ser tratada uma obrigação presente decorrente de eventos passados, cuja saída de recursos é considerada "possível" (mas não provável)?',
       alternativas: [
         'Deve ser reconhecida como uma Provisão no Passivo.',
         'Não deve ser reconhecida no Balanço, mas deve ser divulgada em notas explicativas.',
         'Deve ser reconhecida apenas se o valor puder ser estimado com exatidão.',
-        'Não deve ser reconhecida nem divulgada, pois apenas obrigações prováveis são relevantes.'
+        'Não deve ser reconhecida nem divulgada.'
       ],
       correta: 1,
-      explicacao: 'Obrigações classificadas como "possíveis" são tratadas como passivos contingentes; não são contabilizadas no balanço, mas exigem divulgação obrigatória em notas explicativas.'
+      explicacao: 'Obrigações "possíveis" são passivos contingentes. Não são contabilizadas, mas exigem divulgação obrigatória.'
     },
     {
       id: 2,
-      categoria: 'Juros sobre Capital Próprio',
-      nivel: 'Médio',
-      enunciado: 'Sobre os Juros sobre Capital Próprio (JCP), assinale a alternativa correta quanto ao seu tratamento contábil e fiscal.',
-      alternativas: [
-        'São contabilizados como despesa operacional na DRE para fins societários.',
-        'Não são dedutíveis da base de cálculo do IRPJ e da CSLL.',
-        'Devem ser calculados aplicando-se a TJLP sobre o PL ajustado, respeitando limites de dedutibilidade.',
-        'O recebimento de JCP pelo acionista é isento de imposto de renda.'
-      ],
-      correta: 2,
-      explicacao: 'O JCP é calculado com base na TJLP sobre o PL ajustado. Sua principal vantagem é a dedutibilidade fiscal para a empresa pagadora, embora contabilmente seja distribuição de lucro.'
-    },
-    {
-      id: 3,
-      categoria: 'Investimentos (MEP)',
-      nivel: 'Fácil',
-      enunciado: 'Na avaliação de investimentos pelo Método da Equivalência Patrimonial (MEP), quando a investida reporta um lucro líquido no exercício, qual deve ser o lançamento na investidora?',
-      alternativas: [
-        'Débito em Caixa e Crédito em Receita de Dividendos.',
-        'Débito em Investimentos e Crédito em Receita de Equivalência Patrimonial.',
-        'Débito em Investimentos e Crédito em Ajuste de Avaliação Patrimonial (PL).',
-        'Nenhum lançamento é feito até o pagamento dos dividendos.'
-      ],
-      correta: 1,
-      explicacao: 'No MEP, o lucro da investida aumenta o seu PL, logo a investidora deve aumentar o valor do ativo "Investimentos" e reconhecer a Receita de Equivalência Patrimonial na DRE.'
-    },
-    {
-      id: 4,
-      categoria: 'Ágio e Deságio',
-      nivel: 'Difícil',
-      enunciado: 'Uma sociedade adquiriu outra pagando um valor superior ao valor justo dos ativos líquidos identificáveis, fundamentado na expectativa de rentabilidade futura. Como essa diferença é classificada?',
-      alternativas: [
-        'Ágio por rentabilidade futura (Goodwill), no Ativo Intangível.',
-        'Mais-valia de ativos, como conta redutora do PL.',
-        'Despesa operacional do exercício da aquisição.',
-        'Ágio por fundo de comércio, amortizado linearmente.'
-      ],
-      correta: 0,
-      explicacao: 'O valor pago acima do valor justo dos ativos líquidos (identificáveis) representa o Goodwill (ágio por rentabilidade futura), classificado no Intangível e sujeito a teste de impairment (não amortização).'
-    },
-    {
-      id: 5,
-      categoria: 'Lei 6.404/76 (Classificação)',
+      categoria: 'CPC 25 e Passivos',
       nivel: 'Fácil',
       enunciado: 'Conforme a Lei 6.404/76, as obrigações da companhia serão classificadas no Passivo Não Circulante quando:',
       alternativas: [
@@ -162,77 +121,545 @@
         'O ciclo operacional for menor que 12 meses.'
       ],
       correta: 2,
-      explicacao: 'A regra geral é: vencimento até o final do exercício seguinte = Circulante. Vencimento após o término do exercício seguinte = Não Circulante (Longo Prazo).'
+      explicacao: 'A regra geral é: vencimento após o término do exercício seguinte = Não Circulante (Longo Prazo).'
     },
     {
-      id: 6,
-      categoria: 'Ágio e Deságio',
-      nivel: 'Médio',
-      enunciado: 'O termo "Deságio" na aquisição de investimentos (Compra Vantajosa), sob as normas atuais, ocorre quando:',
-      alternativas: [
-        'O valor pago é superior ao valor justo dos ativos líquidos.',
-        'O valor pago é inferior ao valor justo dos ativos líquidos adquiridos.',
-        'O valor contábil dos ativos é superior ao seu valor justo.',
-        'A empresa adquirida possui prejuízos acumulados.'
-      ],
-      correta: 1,
-      explicacao: 'Quando se paga menos que o valor justo dos ativos líquidos, ocorre o "Ganho por Compra Vantajosa" (antigo deságio econômico), que deve ser reconhecido imediatamente como receita no resultado.'
-    },
-    {
-      id: 7,
-      categoria: 'Lei 6.404/76 (Classificação)',
-      nivel: 'Médio',
-      enunciado: 'A conta de Ajuste a Valor Presente (AVP) relativa a uma obrigação de longo prazo deve ser classificada no Balanço como:',
-      alternativas: [
-        'Uma conta retificadora (redutora) do Passivo correspondente.',
-        'Uma receita financeira a apropriar no Ativo.',
-        'Uma conta de Patrimônio Líquido.',
-        'Uma despesa antecipada no Ativo Circulante.'
-      ],
-      correta: 0,
-      explicacao: 'O AVP reduz o valor nominal da dívida para trazê-la ao valor presente. Portanto, figura como uma conta redutora do passivo ao qual se refere.'
-    },
-    {
-      id: 8,
-      categoria: 'Investimentos (MEP)',
-      nivel: 'Difícil',
-      enunciado: 'Presume-se influência significativa (coligada) quando a investidora for titular de:',
-      alternativas: [
-        '10% ou mais do capital votante da investida.',
-        '20% ou mais do capital votante da investida, sem controlá-la.',
-        '50% mais uma ação do capital votante.',
-        'Qualquer porcentagem, desde que haja intenção de permanência.'
-      ],
-      correta: 1,
-      explicacao: 'Segundo a Lei 6.404/76 e o CPC 18, a presunção legal de influência significativa ocorre quando a investidora detém 20% ou mais do capital votante da investida (sem ter o controle).'
-    },
-    {
-      id: 9,
-      categoria: 'Juros sobre Capital Próprio',
-      nivel: 'Difícil',
-      enunciado: 'No cálculo dos Juros sobre Capital Próprio (JCP), qual conta deve ser excluída da base de cálculo do Patrimônio Líquido?',
-      alternativas: [
-        'Reservas de Lucros.',
-        'Capital Social.',
-        'Reserva de Reavaliação (enquanto não realizada).',
-        'Prejuízos Acumulados (para aumentar a base).'
-      ],
-      correta: 2,
-      explicacao: 'A legislação fiscal determina que a Reserva de Reavaliação não realizada deve ser excluída da base de cálculo do PL para fins de JCP, evitando benefícios fiscais sobre ganhos não efetivados.'
-    },
-    {
-      id: 10,
+      id: 3,
       categoria: 'CPC 25 e Passivos',
       nivel: 'Médio',
-      enunciado: 'No reconhecimento inicial de uma provisão para desmantelamento de ativos (ex: desmobilização de uma plataforma), o valor da provisão deve ser contabilizado a débito de:',
+      enunciado: 'A conta de Ajuste a Valor Presente (AVP) relativa a uma obrigação de longo prazo deve ser classificada como:',
       alternativas: [
-        'Despesa Operacional no resultado imediatamente.',
+        'Conta retificadora (redutora) do Passivo correspondente.',
+        'Receita financeira a apropriar no Ativo.',
+        'Conta de Patrimônio Líquido.',
+        'Despesa antecipada no Ativo Circulante.'
+      ],
+      correta: 0,
+      explicacao: 'O AVP reduz o valor nominal da dívida para trazê-la ao valor presente, figurando como redutora do passivo.'
+    },
+    {
+      id: 4,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Médio',
+      enunciado: 'No reconhecimento inicial de uma provisão para desmantelamento de ativos, o valor da provisão deve ser contabilizado a débito de:',
+      alternativas: [
+        'Despesa Operacional imediatamente.',
         'Ativo Imobilizado (custo do ativo).',
         'Patrimônio Líquido.',
         'Ativo Diferido.'
       ],
       correta: 1,
-      explicacao: 'O custo estimado de desmantelamento futuro é trazido a valor presente e adicionado ao custo do Ativo Imobilizado no momento da aquisição/instalação, sendo depreciado ao longo da vida útil do bem.'
+      explicacao: 'O custo de desmantelamento é parte do custo do ativo, sendo ativado e depreciado ao longo da vida útil.'
+    },
+    {
+      id: 5,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Fácil',
+      enunciado: 'Qual das opções abaixo é um requisito obrigatório para o reconhecimento de uma Provisão?',
+      alternativas: [
+        'A saída de recursos deve ser apenas possível.',
+        'A obrigação deve ser formalizada em contrato escrito.',
+        'Deve ser provável a saída de recursos e o valor estimável com confiabilidade.',
+        'A obrigação deve ter vencimento superior a 360 dias.'
+      ],
+      correta: 2,
+      explicacao: 'Os 3 requisitos são: obrigação presente, saída provável de recursos e estimativa confiável.'
+    },
+    {
+      id: 6,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Médio',
+      enunciado: 'Um Ativo Contingente deve ser reconhecido nas demonstrações contábeis quando:',
+      alternativas: [
+        'A entrada de benefícios econômicos for provável.',
+        'A entrada de benefícios econômicos for praticamente certa.',
+        'A entrada de benefícios econômicos for possível.',
+        'Nunca deve ser reconhecido, apenas divulgado.'
+      ],
+      correta: 1,
+      explicacao: 'Ativos contingentes não são reconhecidos no balanço, exceto se a realização for "praticamente certa" (neste caso, deixam de ser contingentes). Se for apenas "provável", divulga-se.'
+    },
+    {
+      id: 7,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Difícil',
+      enunciado: 'O refinanciamento de uma dívida de longo prazo que venceria no curto prazo, ocorrido após a data do balanço mas antes da divulgação, permite reclassificar a dívida para Não Circulante?',
+      alternativas: [
+        'Sim, sempre.',
+        'Não, a classificação deve refletir a posição na data do balanço.',
+        'Sim, se a empresa tiver a intenção de refinanciar.',
+        'Depende da aprovação do conselho.'
+      ],
+      correta: 1,
+      explicacao: 'Segundo o CPC 26, se a empresa não tinha o direito incondicional de diferir a liquidação na data do balanço, deve classificar como Circulante.'
+    },
+    {
+      id: 8,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Médio',
+      enunciado: 'Obrigações trabalhistas estimadas, como provisão para férias e 13º salário, são classificadas tecnicamente como:',
+      alternativas: [
+        'Passivos Contingentes.',
+        'Reservas de Lucros.',
+        'Provisões (Passivo) ou obrigações por competência (Accruals).',
+        'Despesas Antecipadas.'
+      ],
+      correta: 2,
+      explicacao: 'São obrigações certas quanto à existência, mas com incerteza no valor exato ou data, sendo tratadas como provisões operacionais (accruals).'
+    },
+    {
+      id: 9,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Fácil',
+      enunciado: 'Debêntures emitidas pela companhia conversíveis em ações devem ser classificadas no Passivo?',
+      alternativas: [
+        'Sim, integralmente.',
+        'Não, integralmente no Patrimônio Líquido.',
+        'Sim, mas a parte da opção de conversão pode ser separada como instrumento de patrimônio (instrumento composto).',
+        'Não, são classificadas como ativo financeiro.'
+      ],
+      correta: 2,
+      explicacao: 'Instrumentos compostos devem ter seus componentes de passivo e patrimônio separados na emissão.'
+    },
+    {
+      id: 10,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Difícil',
+      enunciado: 'Se a empresa espera ser reembolsada por terceiros (ex: seguro) em relação a uma provisão:',
+      alternativas: [
+        'O reembolso deve ser compensado no passivo da provisão.',
+        'O reembolso é reconhecido como ativo separado quando for praticamente certo.',
+        'O reembolso é ignorado por prudência.',
+        'O reembolso reduz a despesa, mas não pode ser reconhecido no ativo.'
+      ],
+      correta: 1,
+      explicacao: 'O reembolso é reconhecido como um ativo separado quando o recebimento for praticamente certo. Na DRE, a despesa pode ser apresentada líquida.'
+    },
+
+    // --- BLOCO 2: Juros sobre Capital Próprio (10 questões) ---
+    {
+      id: 11,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Médio',
+      enunciado: 'Sobre o JCP, assinale a alternativa correta quanto ao tratamento contábil e fiscal:',
+      alternativas: [
+        'Contabilizado como despesa na DRE societária.',
+        'Não dedutível do IRPJ.',
+        'Calculado pela TJLP sobre PL ajustado, respeitando limites, e dedutível fiscalmente.',
+        'Isento de IR na fonte para o beneficiário.'
+      ],
+      correta: 2,
+      explicacao: 'JCP é dedutível fiscalmente (vantagem), calculado pela TJLP, mas contabilmente é distribuição de lucro (PL).'
+    },
+    {
+      id: 12,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Difícil',
+      enunciado: 'No cálculo do JCP, qual conta deve ser EXCLUÍDA da base de cálculo do Patrimônio Líquido?',
+      alternativas: [
+        'Reservas de Lucros.',
+        'Capital Social.',
+        'Reserva de Reavaliação não realizada.',
+        'Prejuízos Acumulados.'
+      ],
+      correta: 2,
+      explicacao: 'A Reserva de Reavaliação não realizada deve ser excluída da base para evitar benefícios fiscais sobre ganhos não efetivados.'
+    },
+    {
+      id: 13,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Médio',
+      enunciado: 'Qual o limite de dedutibilidade do JCP em relação ao lucro?',
+      alternativas: [
+        '50% do lucro líquido do exercício ou 50% dos lucros acumulados (o maior dos dois).',
+        '100% do lucro operacional.',
+        '25% do capital social.',
+        'Não há limite, desde que calculado pela TJLP.'
+      ],
+      correta: 0,
+      explicacao: 'A lei fiscal limita a dedução a 50% do lucro líquido do exercício antes do JCP ou 50% dos lucros acumulados e reservas de lucros.'
+    },
+    {
+      id: 14,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Fácil',
+      enunciado: 'A alíquota padrão de Imposto de Renda Retido na Fonte (IRRF) sobre o JCP pago a pessoa física é:',
+      alternativas: [
+        'Isento.',
+        '15%.',
+        '27,5%.',
+        '10%.'
+      ],
+      correta: 1,
+      explicacao: 'A tributação padrão na fonte é de 15% para beneficiários residentes no Brasil.'
+    },
+    {
+      id: 15,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Médio',
+      enunciado: 'A contabilização do JCP a pagar na empresa, segundo as normas contábeis (CVM/CPC), deve ser:',
+      alternativas: [
+        'D - Despesa Financeira / C - Passivo.',
+        'D - Lucros Acumulados (PL) / C - Passivo (JCP a Pagar).',
+        'D - Ativo Diferido / C - Caixa.',
+        'D - Reserva de Capital / C - Passivo.'
+      ],
+      correta: 1,
+      explicacao: 'Embora transite pelo resultado para fins fiscais (livro LALUR), na contabilidade societária é debitado diretamente no PL (distribuição de resultados).'
+    },
+    {
+      id: 16,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Difícil',
+      enunciado: 'Se a empresa contabilizar o JCP como despesa financeira na DRE (prática antiga), qual ajuste é necessário na elaboração das demonstrações finais?',
+      alternativas: [
+        'Nenhum ajuste é necessário.',
+        'Estorno da despesa na DRE e registro a débito do PL, ajustando o lucro líquido.',
+        'Ajuste apenas no LALUR.',
+        'Reclassificação para despesa administrativa.'
+      ],
+      correta: 1,
+      explicacao: 'Para atender às normas internacionais, deve-se reverter a despesa na DRE (aumentando o lucro) e debitar os Lucros Acumulados.'
+    },
+    {
+      id: 17,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Médio',
+      enunciado: 'O JCP não reclamado pelos acionistas prescreve em quanto tempo, segundo a Lei 6.404/76?',
+      alternativas: [
+        '1 ano.',
+        '3 anos.',
+        '5 anos.',
+        '20 anos.'
+      ],
+      correta: 1,
+      explicacao: 'A ação para haver dividendos e juros sobre capital próprio prescreve em 3 anos, revertendo a favor da companhia.'
+    },
+    {
+      id: 18,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Fácil',
+      enunciado: 'A base de cálculo do JCP (Patrimônio Líquido) inclui as Reservas de Capital?',
+      alternativas: [
+        'Sim, todas.',
+        'Não, apenas Capital Social.',
+        'Sim, exceto correção monetária.',
+        'Não, apenas Reservas de Lucros.'
+      ],
+      correta: 0,
+      explicacao: 'Sim, o cálculo inclui Capital Social, Reservas de Capital, Reservas de Lucros, Ações em Tesouraria (deduzindo) e Prejuízos (deduzindo).'
+    },
+    {
+      id: 19,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Médio',
+      enunciado: 'Uma empresa com Prejuízo Fiscal no ano pode pagar JCP?',
+      alternativas: [
+        'Nunca.',
+        'Sim, desde que tenha Lucros Acumulados de exercícios anteriores suficientes (respeitando o limite de 50%).',
+        'Sim, sem limites.',
+        'Apenas se tiver autorização da CVM.'
+      ],
+      correta: 1,
+      explicacao: 'Sim, um dos limites é 50% dos lucros acumulados/reservas de lucros, permitindo o pagamento mesmo com prejuízo no exercício corrente.'
+    },
+    {
+      id: 20,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Difícil',
+      enunciado: 'O pagamento de JCP é obrigatório?',
+      alternativas: [
+        'Sim, sempre.',
+        'Não, é uma faculdade da administração, salvo disposição estatutária em contrário.',
+        'Sim, se houver lucro.',
+        'Não, é proibido se houver dividendos.'
+      ],
+      correta: 1,
+      explicacao: 'É facultativo. A empresa pode optar por pagar apenas dividendos. O JCP pode ser imputado ao dividendo mínimo obrigatório.'
+    },
+
+    // --- BLOCO 3: Investimentos e MEP (10 questões) ---
+    {
+      id: 21,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Fácil',
+      enunciado: 'No MEP, quando a investida reporta lucro líquido, a investidora lança:',
+      alternativas: [
+        'D - Caixa / C - Receita.',
+        'D - Investimentos / C - Receita de Equivalência Patrimonial.',
+        'D - Investimentos / C - PL.',
+        'Nenhum lançamento.'
+      ],
+      correta: 1,
+      explicacao: 'O lucro aumenta o PL da investida, logo a investidora aumenta o investimento e reconhece a receita.'
+    },
+    {
+      id: 22,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Difícil',
+      enunciado: 'Presume-se influência significativa (coligada) quando a investidora detém:',
+      alternativas: [
+        '10% do capital.',
+        '20% ou mais do capital votante, sem controle.',
+        '50% mais uma ação.',
+        'Qualquer % com intenção de permanência.'
+      ],
+      correta: 1,
+      explicacao: 'A presunção legal (Lei 6.404/CPC 18) inicia-se com 20% do capital votante.'
+    },
+    {
+      id: 23,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Médio',
+      enunciado: 'Quando a investida avaliada pelo MEP paga dividendos, o lançamento na investidora é:',
+      alternativas: [
+        'D - Caixa / C - Receita de Dividendos.',
+        'D - Caixa / C - Investimentos.',
+        'D - Investimentos / C - Receita.',
+        'D - PL / C - Caixa.'
+      ],
+      correta: 1,
+      explicacao: 'No MEP, o dividendo reduz o PL da investida, logo reduz o saldo da conta Investimentos na investidora (troca de ativo: Investimento por Caixa).'
+    },
+    {
+      id: 24,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Médio',
+      enunciado: 'Se a investida reconhece um "Ajuste de Avaliação Patrimonial" (outros resultados abrangentes) positivo em seu PL, a investidora deve:',
+      alternativas: [
+        'Reconhecer Receita na DRE.',
+        'Reconhecer o aumento no Investimento e creditar "Ajuste de Avaliação Patrimonial" no seu próprio PL.',
+        'Ignorar até a realização.',
+        'Reconhecer ganho de capital.'
+      ],
+      correta: 1,
+      explicacao: 'A variação no PL da investida deve ser refletida na investidora. Se foi em conta de PL (não resultado), a investidora também registra no PL.'
+    },
+    {
+      id: 25,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Fácil',
+      enunciado: 'O Método de Custo é utilizado para avaliar:',
+      alternativas: [
+        'Coligadas.',
+        'Controladas.',
+        'Investimentos onde não há influência significativa nem controle (e não mensurados a valor justo).',
+        'Joint ventures.'
+      ],
+      correta: 2,
+      explicacao: 'Sem influência significativa ou controle, usa-se valor justo ou custo (se não tiver cotação).'
+    },
+    {
+      id: 26,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Difícil',
+      enunciado: 'Lucros não realizados em transações da Investidora para a Coligada (Downstream) devem ser:',
+      alternativas: [
+        'Eliminados totalmente.',
+        'Eliminados na proporção da participação da investidora.',
+        'Ignorados.',
+        'Reconhecidos integralmente.'
+      ],
+      correta: 1,
+      explicacao: 'Em coligadas, elimina-se o lucro não realizado na proporção da participação. Em controladas (consolidação), elimina-se totalmente.'
+    },
+    {
+      id: 27,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Médio',
+      enunciado: 'O ágio pago por rentabilidade futura (goodwill) na aquisição de uma coligada deve ser:',
+      alternativas: [
+        'Registrado separadamente no Intangível.',
+        'Registrado dentro do saldo contábil do Investimento (no grupo Investimentos).',
+        'Amortizado em 5 anos.',
+        'Lançado como despesa.'
+      ],
+      correta: 1,
+      explicacao: 'Nas demonstrações individuais (Investimentos), o goodwill fica "embutido" no saldo da conta de Investimentos, evidenciado em notas explicativas ou subconta.'
+    },
+    {
+      id: 28,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Fácil',
+      enunciado: 'Uma perda por impairment (desvalorização) em investimentos avaliados pelo MEP é:',
+      alternativas: [
+        'Não permitida.',
+        'Reconhecida no resultado se o valor recuperável for menor que o contábil.',
+        'Reconhecida no PL.',
+        'Amortizada.'
+      ],
+      correta: 1,
+      explicacao: 'O investimento deve ser testado para impairment e a perda reconhecida no resultado.'
+    },
+    {
+      id: 29,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Difícil',
+      enunciado: 'Se a participação da investidora for reduzida de 30% para 10%, perdendo a influência significativa:',
+      alternativas: [
+        'Continua no MEP.',
+        'Passa a avaliar pelo Valor Justo (instrumento financeiro) e reconhece ganho/perda na mudança.',
+        'Mantém o custo histórico para sempre.',
+        'Aplica o MEP retrospectivamente.'
+      ],
+      correta: 1,
+      explicacao: 'Ao perder a influência, descontinua-se o MEP. O saldo remanescente é mensurado a valor justo, e a diferença vai para o resultado.'
+    },
+    {
+      id: 30,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Médio',
+      enunciado: 'O PL da investida a ser considerado para o MEP deve ser:',
+      alternativas: [
+        'O PL contábil sem ajustes.',
+        'O PL ajustado ao valor justo dos ativos e passivos da investida (na data da aquisição) e políticas contábeis uniformes.',
+        'O valor de mercado das ações.',
+        'O capital social apenas.'
+      ],
+      correta: 1,
+      explicacao: 'Para o MEP, deve-se usar o PL ajustado para refletir as mesmas práticas contábeis da investidora e a alocação do preço de compra (PPA) se houver.'
+    },
+
+    // --- BLOCO 4: Ágio e Deságio (10 questões) ---
+    {
+      id: 31,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Difícil',
+      enunciado: 'O Goodwill (ágio por rentabilidade futura) gerado internamente:',
+      alternativas: [
+        'Deve ser reconhecido no Ativo.',
+        'Não deve ser reconhecido como ativo.',
+        'Pode ser reconhecido se houver laudo.',
+        'É reconhecido no PL.'
+      ],
+      correta: 1,
+      explicacao: 'O Goodwill gerado internamente não é reconhecido, pois não pode ser identificado separadamente nem mensurado com confiabilidade (CPC 04).'
+    },
+    {
+      id: 32,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Médio',
+      enunciado: 'A amortização do Goodwill (fundo de comércio):',
+      alternativas: [
+        'É obrigatória linearmente em 10 anos.',
+        'Não é permitida contabilmente (sujeito a impairment).',
+        'É permitida apenas fiscalmente.',
+        'É de 5% ao ano.'
+      ],
+      correta: 1,
+      explicacao: 'Contabilmente (IFRS/CPC), o goodwill não é amortizado, mas testado anualmente. Fiscalmente, pode ser amortizado após a incorporação/fusão.'
+    },
+    {
+      id: 33,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Médio',
+      enunciado: 'O "Deságio" na aquisição (Compra Vantajosa) ocorre quando:',
+      alternativas: [
+        'Valor pago > Valor Justo.',
+        'Valor pago < Valor Justo dos ativos líquidos.',
+        'Valor contábil > Valor Justo.',
+        'Empresa tem prejuízo.'
+      ],
+      correta: 1,
+      explicacao: 'Compra vantajosa (bargain purchase) é quando o custo de aquisição é menor que o valor justo dos ativos líquidos identificáveis.'
+    },
+    {
+      id: 34,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Fácil',
+      enunciado: 'O ganho por Compra Vantajosa deve ser registrado:',
+      alternativas: [
+        'No PL como reserva.',
+        'Imediatamente no Resultado do exercício (Receita).',
+        'Como passivo diferido.',
+        'Redutor do Ativo.'
+      ],
+      correta: 1,
+      explicacao: 'O ganho é reconhecido imediatamente na DRE após reavaliação dos ativos para garantir que a mensuração está correta.'
+    },
+    {
+      id: 35,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Difícil',
+      enunciado: 'A Mais-Valia de ativos líquidos (diferença entre Valor Justo e Valor Contábil) na aquisição:',
+      alternativas: [
+        'É o mesmo que Goodwill.',
+        'É alocada aos respectivos ativos (estoques, imobilizado) na consolidação.',
+        'É lançada como despesa.',
+        'É registrada no PL da adquirida.'
+      ],
+      correta: 1,
+      explicacao: 'A mais-valia é a diferença de valor nos ativos identificáveis. Ela é alocada a eles e realizada (depreciada/baixada) conforme esses ativos são consumidos.'
+    },
+    {
+      id: 36,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Médio',
+      enunciado: 'Para fins fiscais, o ágio por rentabilidade futura só pode ser deduzido (amortizado) quando:',
+      alternativas: [
+        'Houver o pagamento.',
+        'Ocorrer confusão patrimonial (incorporação, fusão ou cisão) entre investidora e investida.',
+        'Imediatamente na aquisição.',
+        'Nunca é dedutível.'
+      ],
+      correta: 1,
+      explicacao: 'A dedutibilidade fiscal do ágio exige a efetiva absorção do patrimônio (incorporação/fusão/cisão).'
+    },
+    {
+      id: 37,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Difícil',
+      enunciado: 'O "Ágio gerado por expectativa de valorização de ativos" (ex: imóvel vale mais que o contábil):',
+      alternativas: [
+        'É Goodwill.',
+        'É Mais-Valia de ativos.',
+        'É Compra Vantajosa.',
+        'Não é reconhecido.'
+      ],
+      correta: 1,
+      explicacao: 'Se o ágio se justifica pelo valor de mercado dos bens, é tecnicamente "Mais-Valia" e não Goodwill (que é a rentabilidade futura intangível).'
+    },
+    {
+      id: 38,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Fácil',
+      enunciado: 'Onde é classificado o Goodwill na consolidação?',
+      alternativas: [
+        'Ativo Circulante.',
+        'Ativo Não Circulante - Intangível.',
+        'Patrimônio Líquido.',
+        'Despesa.'
+      ],
+      correta: 1,
+      explicacao: 'O Goodwill adquirido é um ativo intangível de vida útil indefinida.'
+    },
+    {
+      id: 39,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Médio',
+      enunciado: 'Se o teste de impairment indicar desvalorização do Goodwill:',
+      alternativas: [
+        'Pode ser revertido futuramente se o valor subir.',
+        'A perda é reconhecida e NÃO pode ser revertida posteriormente.',
+        'Não se faz nada.',
+        'Ajusta-se o PL.'
+      ],
+      correta: 1,
+      explicacao: 'Diferente de outros ativos, a perda por impairment de Goodwill nunca pode ser revertida (CPC 01).'
+    },
+    {
+      id: 40,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Difícil',
+      enunciado: 'Na aquisição de controle, os custos da transação (honorários, consultoria) devem ser:',
+      alternativas: [
+        'Somados ao custo do investimento (gerando mais ágio).',
+        'Reconhecidos como despesa no resultado do período em que incorridos.',
+        'Abatidos do PL.',
+        'Diferidos.'
+      ],
+      correta: 1,
+      explicacao: 'Conforme o CPC 15 (Combinação de Negócios), custos de transação são despesas na DRE e não compõem o custo da aquisição (exceto custos de emissão de dívida/ações).'
     }
   ];
 
@@ -253,25 +680,22 @@
   const scoreEl = document.getElementById('score');
   const weaknessesEl = document.getElementById('weaknesses');
 
-  // Inicialização
   function init(){
-    const saved = localStorage.getItem('simulado_avancada_v1');
+    const saved = localStorage.getItem('simulado_completo_40');
     if(saved){
       try{
         const parsedState = JSON.parse(saved);
         if(parsedState.respostas.length === questoes.length){
             estado = parsedState;
         }
-      }catch(e){
-        console.error("Erro ao carregar estado salvo:", e);
-      }
+      }catch(e){ console.error(e); }
     }
     renderQuestion();
     updateControls();
     updateProgressUI();
   }
 
-  function saveState(){localStorage.setItem('simulado_avancada_v1', JSON.stringify(estado));}
+  function saveState(){localStorage.setItem('simulado_completo_40', JSON.stringify(estado));}
 
   function renderQuestion(){
     const q = questoes[estado.index];
@@ -290,7 +714,7 @@
           return `<div class="alt ${selected}" data-index="${i}">${String.fromCharCode(65+i)}) ${escapeHtml(alt)}</div>`
         }).join('')}
       </div>
-      <div style="margin-top:10px;color:var(--muted);font-size:13px">${estado.respostas[estado.index] === null ? 'Você ainda não respondeu esta questão.' : 'Resposta marcada: ' + String.fromCharCode(65+estado.respostas[estado.index])}</div>
+      <div style="margin-top:10px;color:var(--muted);font-size:13px">${estado.respostas[estado.index] === null ? 'Pendência.' : 'Marcado: ' + String.fromCharCode(65+estado.respostas[estado.index])}</div>
     `;
 
     document.querySelectorAll('.alt').forEach(el=>{
@@ -311,13 +735,11 @@
 
   prevBtn.addEventListener('click', ()=>{ if(estado.index>0){estado.index--; saveState(); renderQuestion(); updateControls();}});
   nextBtn.addEventListener('click', ()=>{ if(estado.index<questoes.length-1){estado.index++; saveState(); renderQuestion(); updateControls();}});
-  resetBtn.addEventListener('click', ()=>{ if(confirm('Reiniciar respostas e progresso?')){estado = {index:0,respostas:Array(questoes.length).fill(null)}; saveState(); location.reload();}});
+  resetBtn.addEventListener('click', ()=>{ if(confirm('Reiniciar?')){estado = {index:0,respostas:Array(questoes.length).fill(null)}; saveState(); location.reload();}});
 
   submitBtn.addEventListener('click', ()=>{
-    const naoRespondidas = estado.respostas.filter(r=>r===null).length;
-    if(naoRespondidas>0){
-      if(!confirm(`Você deixou ${naoRespondidas} questão(ões) em branco. Deseja enviar mesmo assim?`)) return;
-    }
+    const pendentes = estado.respostas.filter(r=>r===null).length;
+    if(pendentes>0 && !confirm(`Ainda há ${pendentes} questões em branco. Enviar mesmo assim?`)) return;
     computeResults();
   });
 
@@ -332,86 +754,71 @@
       const isCorrect = resp === q.correta;
       if(isCorrect) corretas++;
       else errosPorCategoria[q.categoria] = (errosPorCategoria[q.categoria]||0)+1;
-
       detalhes.push({q,resp,isCorrect});
     });
 
+    // Feedback
     const insights = [];
-    if(corretas===total) insights.push('Excelente! Domínio total dos conceitos avançados.');
-    else if(corretas/total >= 0.7) insights.push('Muito bom! Você tem uma base sólida na Lei 6.404/76 e CPCs.');
-    else if(corretas/total >= 0.5) insights.push('Bom começo, mas revise as definições de Ágio e regras do JCP.');
-    else insights.push('Atenção aos conceitos básicos de Investimentos e Passivos. Revisão teórica recomendada.');
-    
-    const weaknesses = Object.keys(errosPorCategoria).map(cat=>({categoria:cat, erros:errosPorCategoria[cat], recomendacao: recomendacaoPorCategoria(cat)}));
+    const pct = corretas/total;
+    if(pct >= 0.8) insights.push('Excelente! Domínio avançado dos temas.');
+    else if(pct >= 0.6) insights.push('Bom desempenho! Revise os detalhes finos.');
+    else insights.push('Recomendamos reforçar a base teórica.');
+
+    const weaknesses = Object.keys(errosPorCategoria).map(cat=>({
+      categoria:cat, erros:errosPorCategoria[cat], 
+      recomendacao: recomendacao(cat)
+    }));
 
     summaryEl.style.display='grid';
-    const pct = Math.round((estado.respostas.filter(r=>r!==null).length/total)*100);
-    progressBar.style.width = pct + '%';
-    progressText.textContent = `${estado.respostas.filter(r=>r!==null).length} / ${total} respondidas`;
+    progressBar.style.width = Math.round((estado.respostas.filter(r=>r!==null).length/total)*100) + '%';
+    progressText.textContent = `${estado.respostas.filter(r=>r!==null).length} / ${total}`;
     correctText.textContent = `${corretas} corretas`;
     insightsList.innerHTML = insights.map(i=>`<div>• ${escapeHtml(i)}</div>`).join('');
     scoreEl.textContent = `${corretas} / ${total}`;
-    if(weaknesses.length===0){ weaknessesEl.innerHTML = '<div style="color:var(--success)">Nenhuma fraqueza identificada. Parabéns!</div>'; }
-    else{
-      weaknessesEl.innerHTML = weaknesses.map(w=>`<div style="margin-bottom:8px"><strong>${escapeHtml(w.categoria)}</strong> — Erros: ${w.erros}<div style="color:var(--muted);font-size:13px;margin-top:4px">${escapeHtml(w.recomendacao)}</div></div>`).join('');
-    }
+    
+    if(weaknesses.length===0) weaknessesEl.innerHTML = '<div style="color:var(--success)">Parabéns! Nenhuma falha detectada.</div>';
+    else weaknessesEl.innerHTML = weaknesses.map(w=>`<div style="margin-bottom:8px"><strong>${w.categoria}</strong>: ${w.erros} erros.<div style="color:var(--muted);font-size:13px">${w.recomendacao}</div></div>`).join('');
 
-    const detalhesHtml = detalhes.map((d,idx)=>{
-      const status = d.isCorrect ? '✔ Correta' : '✖ Incorreta';
-      const statusColor = d.isCorrect ? 'var(--success)' : 'var(--danger)';
-      let suaRespostaHtml = '<em>Sem resposta</em>';
-      if(d.resp !== null) {
-        suaRespostaHtml = `${String.fromCharCode(65+d.resp)}) ${escapeHtml(questoes[idx].alternativas[d.resp])}`;
-      }
-
-      return `
-        <div style="margin-top:12px;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);">
-          <div style="font-weight:600">Q${questoes[idx].id} — ${questoes[idx].categoria} <small style='color:var(--muted)'>(${questoes[idx].nivel})</small></div>
-          <div style="margin-top:6px">${escapeHtml(questoes[idx].enunciado)}</div>
-          <div style="margin-top:8px;color:${statusColor}">${status}</div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px">Sua resposta: ${suaRespostaHtml}</div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px">Gabarito: ${String.fromCharCode(65+questoes[idx].correta)}) ${escapeHtml(questoes[idx].alternativas[questoes[idx].correta])}</div>
-          <div style="margin-top:8px;padding:8px; border-left: 2px solid var(--accent); color:var(--muted);font-size:13px"><b>Explicação:</b> ${escapeHtml(questoes[idx].explicacao)}</div>
-        </div>
-      `;
-    }).join('');
-
+    // Detalhes
     const existing = document.getElementById('detContainer');
     if(existing) existing.remove();
-    
-    const detailsContainer = document.createElement('div');
-    detailsContainer.className='card';
-    detailsContainer.style.marginTop='12px';
-    detailsContainer.id = 'detContainer';
-    detailsContainer.innerHTML = `<h3>Detalhamento das questões</h3>${detalhesHtml}`;
-    document.getElementById('app').appendChild(detailsContainer);
+    const detDiv = document.createElement('div');
+    detDiv.className='card';
+    detDiv.id='detContainer';
+    detDiv.style.marginTop='12px';
+    detDiv.innerHTML = `<h3>Gabarito Comentado</h3>` + detalhes.map((d,idx)=>`
+      <div style="margin-top:12px;padding:10px;background:rgba(255,255,255,0.02);border-radius:8px">
+        <div style="font-weight:600">Q${d.q.id} (${d.q.categoria})</div>
+        <div style="margin-top:4px">${escapeHtml(d.q.enunciado)}</div>
+        <div style="margin-top:6px;color:${d.isCorrect?'var(--success)':'var(--danger)'}">${d.isCorrect?'✔ Correta':'✖ Incorreta'}</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">Gabarito: ${escapeHtml(d.q.alternativas[d.q.correta])}</div>
+        <div style="font-size:13px;margin-top:4px;border-left:2px solid var(--accent);padding-left:8px">${escapeHtml(d.q.explicacao)}</div>
+      </div>
+    `).join('');
+    document.getElementById('app').appendChild(detDiv);
 
-    prevBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
-    submitBtn.style.display = 'none';
-    resetBtn.style.marginLeft = 'auto';
+    prevBtn.style.display='none'; nextBtn.style.display='none'; submitBtn.style.display='none';
+    resetBtn.style.marginLeft='auto';
   }
 
-  function recomendacaoPorCategoria(cat){
-    const dicas = {
-      'CPC 25 e Passivos': 'Revisar os conceitos de provisão vs passivo contingente e a classificação de passivos circulantes vs não circulantes (Lei 6.404).',
-      'Juros sobre Capital Próprio': 'Foque na natureza híbrida do JCP: despesa fiscal (dedutível) mas distribuição de lucro societária. Atente aos limites de cálculo.',
-      'Investimentos (MEP)': 'Estude os lançamentos do MEP (reconhecimento de lucro da investida e recebimento de dividendos) e o conceito de influência significativa (20%).',
-      'Ágio e Deságio': 'Diferencie Goodwill (ágio por rentabilidade futura) de Compra Vantajosa (deságio/ganho). Lembre-se que Goodwill não se amortiza, testa-se o impairment.'
+  function recomendacao(cat){
+    const map = {
+      'CPC 25 e Passivos': 'Revisar definições de provisões x contingências e classificação de passivos (CPC 25/26).',
+      'Juros sobre Capital Próprio': 'Focar na dedutibilidade fiscal e no cálculo sobre o PL ajustado (Lei 9.249).',
+      'Investimentos (MEP)': 'Estudar lançamentos de equivalência, dividendos e mais-valia na investidora.',
+      'Ágio e Deságio': 'Diferenciar Goodwill de Compra Vantajosa e tratamento no balanço consolidado.'
     };
-    return dicas[cat] || 'Revisar a teoria contábil específica deste tópico.';
+    return map[cat] || 'Revisão geral necessária.';
   }
 
   function updateProgressUI(){
     const total = questoes.length;
     const filled = estado.respostas.filter(r=>r!==null).length;
-    const pct = filled > 0 ? Math.round((filled/total)*100) : 0;
-    if (progressBar) progressBar.style.width = pct + '%';
-    if (progressText) progressText.textContent = `${filled} / ${total} respondidas`;
-    if (correctText) correctText.textContent = `-`;
+    progressBar.style.width = Math.round((filled/total)*100) + '%';
+    progressText.textContent = `${filled} / ${total} respondidas`;
   }
 
-  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]}); }
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m])); }
 
   init();
   </script>

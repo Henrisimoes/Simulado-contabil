@@ -1,0 +1,423 @@
+Com certeza! Aqui está o código completo, mantendo exatamente a mesma estrutura visual (Dark Mode), a mesma lógica de "feedback inteligente" e, claro, o GIF do Calcifer centralizado no topo.
+Substituí as questões antigas pelas novas questões sobre Lei 6.404/76, Juros sobre Capital Próprio, Avaliação de Investimentos e Ágio/Deságio, conforme você solicitou anteriormente.
+Basta copiar e salvar como .html.
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulado Contabilidade Avançada e Lei 6.404/76</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--success:#10b981;--danger:#ef4444;--muted:#94a3b8}
+    *{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071128 0%, #071a2a 100%);color:#e6efF6}
+    .wrap{max-width:920px;margin:40px auto;padding:24px}
+    header{display:flex;align-items:center;gap:16px}
+    header h1{margin:0;font-size:20px}
+    .card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:18px;border-radius:12px;margin-top:18px}
+    .question-area{min-height:180px}
+    .alternativas{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .alt{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
+    .alt.selected{outline:2px solid rgba(6,182,212,0.18);background:rgba(6,182,212,0.04)}
+    .controls{display:flex;gap:8px;margin-top:14px}
+    button{background:var(--accent);color:#012; border:none;padding:10px 14px;border-radius:8px;cursor:pointer; font-weight: 600;}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    button:disabled{opacity:0.5;cursor:not-allowed}
+    .summary{display:grid;grid-template-columns:1fr 320px;gap:16px;margin-top:18px}
+    .progress{height:10px;background:rgba(255,255,255,0.03);border-radius:6px;overflow:hidden}
+    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#7c3aed);width:0%;transition:width 0.3s ease}
+    .insights{font-size:14px;color:var(--muted)}
+    .tag{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:12px;color:var(--muted);margin-right:6px}
+    .result-score{font-size:32px;margin:0}
+    footer{margin-top:24px;text-align:center;color:var(--muted);font-size:13px}
+    @media(max-width:860px){.summary{grid-template-columns:1fr;}.wrap{padding:12px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://cdn.dribbble.com/userupload/21464681/file/original-f6ebfdc418f96b396288ccb013c1c339.gif" 
+             alt="Animação do Calcifer" 
+             style="width: 120px; height: 120px; border-radius: 50%;">
+    </div>
+
+    <header>
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='42' height='42'><rect rx='8' width='42' height='42' fill='%2306b6d4'/></svg>" alt="logo" style="width:42px;height:42px;border-radius:8px">
+      <div>
+        <h1>Simulado Contabilidade — Lei 6.404/76 e Avançada</h1>
+        <div style="color:var(--muted);font-size:13px">10 questões — JCP, Investimentos, Ágio/Deságio e Provisões</div>
+      </div>
+    </header>
+
+    <section class="card" id="app">
+      <div class="question-area" id="questionArea">
+        </div>
+
+      <div class="controls">
+        <button id="prevBtn" class="ghost">◀ Anterior</button>
+        <button id="nextBtn">Próxima ▶</button>
+        <button id="submitBtn" class="ghost" style="margin-left:auto">Enviar respostas</button>
+        <button id="resetBtn" class="ghost">Reiniciar</button>
+      </div>
+
+      <div class="summary" id="summary" style="display:none">
+        <div class="card" style="padding:14px">
+          <h3>Resumo</h3>
+          <div style="margin-top:8px">
+            <div class="progress"><i id="progressBar"></i></div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px">
+              <small class="insights" id="progressText">0 / 10 respondidas</small>
+              <small class="insights" id="correctText">0 corretas</small>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:0 0 8px 0">Insights</h4>
+            <div id="insightsList" class="insights">—</div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:14px">
+          <h3>Score</h3>
+          <p class="result-score" id="score">0 / 10</p>
+          <div style="margin-top:8px">
+            <h4 style="margin:6px 0">Pontos para melhorar</h4>
+            <div id="weaknesses">—</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Projetado para ser hospedado no GitHub Pages. Questões para fins educativos.
+    </footer>
+  </div>
+
+  <script>
+  // QUESTÕES: Lei 6.404/76 e Contabilidade Avançada
+  const questoes = [
+    {
+      id: 1,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Médio',
+      enunciado: 'De acordo com a Lei nº 6.404/76 e CPC 25, como deve ser tratada uma obrigação presente decorrente de eventos passados, cuja saída de recursos é considerada "possível" (mas não provável)?',
+      alternativas: [
+        'Deve ser reconhecida como uma Provisão no Passivo.',
+        'Não deve ser reconhecida no Balanço, mas deve ser divulgada em notas explicativas.',
+        'Deve ser reconhecida apenas se o valor puder ser estimado com exatidão.',
+        'Não deve ser reconhecida nem divulgada, pois apenas obrigações prováveis são relevantes.'
+      ],
+      correta: 1,
+      explicacao: 'Obrigações classificadas como "possíveis" são tratadas como passivos contingentes; não são contabilizadas no balanço, mas exigem divulgação obrigatória em notas explicativas.'
+    },
+    {
+      id: 2,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Médio',
+      enunciado: 'Sobre os Juros sobre Capital Próprio (JCP), assinale a alternativa correta quanto ao seu tratamento contábil e fiscal.',
+      alternativas: [
+        'São contabilizados como despesa operacional na DRE para fins societários.',
+        'Não são dedutíveis da base de cálculo do IRPJ e da CSLL.',
+        'Devem ser calculados aplicando-se a TJLP sobre o PL ajustado, respeitando limites de dedutibilidade.',
+        'O recebimento de JCP pelo acionista é isento de imposto de renda.'
+      ],
+      correta: 2,
+      explicacao: 'O JCP é calculado com base na TJLP sobre o PL ajustado. Sua principal vantagem é a dedutibilidade fiscal para a empresa pagadora, embora contabilmente seja distribuição de lucro.'
+    },
+    {
+      id: 3,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Fácil',
+      enunciado: 'Na avaliação de investimentos pelo Método da Equivalência Patrimonial (MEP), quando a investida reporta um lucro líquido no exercício, qual deve ser o lançamento na investidora?',
+      alternativas: [
+        'Débito em Caixa e Crédito em Receita de Dividendos.',
+        'Débito em Investimentos e Crédito em Receita de Equivalência Patrimonial.',
+        'Débito em Investimentos e Crédito em Ajuste de Avaliação Patrimonial (PL).',
+        'Nenhum lançamento é feito até o pagamento dos dividendos.'
+      ],
+      correta: 1,
+      explicacao: 'No MEP, o lucro da investida aumenta o seu PL, logo a investidora deve aumentar o valor do ativo "Investimentos" e reconhecer a Receita de Equivalência Patrimonial na DRE.'
+    },
+    {
+      id: 4,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Difícil',
+      enunciado: 'Uma sociedade adquiriu outra pagando um valor superior ao valor justo dos ativos líquidos identificáveis, fundamentado na expectativa de rentabilidade futura. Como essa diferença é classificada?',
+      alternativas: [
+        'Ágio por rentabilidade futura (Goodwill), no Ativo Intangível.',
+        'Mais-valia de ativos, como conta redutora do PL.',
+        'Despesa operacional do exercício da aquisição.',
+        'Ágio por fundo de comércio, amortizado linearmente.'
+      ],
+      correta: 0,
+      explicacao: 'O valor pago acima do valor justo dos ativos líquidos (identificáveis) representa o Goodwill (ágio por rentabilidade futura), classificado no Intangível e sujeito a teste de impairment (não amortização).'
+    },
+    {
+      id: 5,
+      categoria: 'Lei 6.404/76 (Classificação)',
+      nivel: 'Fácil',
+      enunciado: 'Conforme a Lei 6.404/76, as obrigações da companhia serão classificadas no Passivo Não Circulante quando:',
+      alternativas: [
+        'Vencerem no exercício seguinte.',
+        'Não tiverem prazo de vencimento determinado.',
+        'Vencerem após o término do exercício social seguinte.',
+        'O ciclo operacional for menor que 12 meses.'
+      ],
+      correta: 2,
+      explicacao: 'A regra geral é: vencimento até o final do exercício seguinte = Circulante. Vencimento após o término do exercício seguinte = Não Circulante (Longo Prazo).'
+    },
+    {
+      id: 6,
+      categoria: 'Ágio e Deságio',
+      nivel: 'Médio',
+      enunciado: 'O termo "Deságio" na aquisição de investimentos (Compra Vantajosa), sob as normas atuais, ocorre quando:',
+      alternativas: [
+        'O valor pago é superior ao valor justo dos ativos líquidos.',
+        'O valor pago é inferior ao valor justo dos ativos líquidos adquiridos.',
+        'O valor contábil dos ativos é superior ao seu valor justo.',
+        'A empresa adquirida possui prejuízos acumulados.'
+      ],
+      correta: 1,
+      explicacao: 'Quando se paga menos que o valor justo dos ativos líquidos, ocorre o "Ganho por Compra Vantajosa" (antigo deságio econômico), que deve ser reconhecido imediatamente como receita no resultado.'
+    },
+    {
+      id: 7,
+      categoria: 'Lei 6.404/76 (Classificação)',
+      nivel: 'Médio',
+      enunciado: 'A conta de Ajuste a Valor Presente (AVP) relativa a uma obrigação de longo prazo deve ser classificada no Balanço como:',
+      alternativas: [
+        'Uma conta retificadora (redutora) do Passivo correspondente.',
+        'Uma receita financeira a apropriar no Ativo.',
+        'Uma conta de Patrimônio Líquido.',
+        'Uma despesa antecipada no Ativo Circulante.'
+      ],
+      correta: 0,
+      explicacao: 'O AVP reduz o valor nominal da dívida para trazê-la ao valor presente. Portanto, figura como uma conta redutora do passivo ao qual se refere.'
+    },
+    {
+      id: 8,
+      categoria: 'Investimentos (MEP)',
+      nivel: 'Difícil',
+      enunciado: 'Presume-se influência significativa (coligada) quando a investidora for titular de:',
+      alternativas: [
+        '10% ou mais do capital votante da investida.',
+        '20% ou mais do capital votante da investida, sem controlá-la.',
+        '50% mais uma ação do capital votante.',
+        'Qualquer porcentagem, desde que haja intenção de permanência.'
+      ],
+      correta: 1,
+      explicacao: 'Segundo a Lei 6.404/76 e o CPC 18, a presunção legal de influência significativa ocorre quando a investidora detém 20% ou mais do capital votante da investida (sem ter o controle).'
+    },
+    {
+      id: 9,
+      categoria: 'Juros sobre Capital Próprio',
+      nivel: 'Difícil',
+      enunciado: 'No cálculo dos Juros sobre Capital Próprio (JCP), qual conta deve ser excluída da base de cálculo do Patrimônio Líquido?',
+      alternativas: [
+        'Reservas de Lucros.',
+        'Capital Social.',
+        'Reserva de Reavaliação (enquanto não realizada).',
+        'Prejuízos Acumulados (para aumentar a base).'
+      ],
+      correta: 2,
+      explicacao: 'A legislação fiscal determina que a Reserva de Reavaliação não realizada deve ser excluída da base de cálculo do PL para fins de JCP, evitando benefícios fiscais sobre ganhos não efetivados.'
+    },
+    {
+      id: 10,
+      categoria: 'CPC 25 e Passivos',
+      nivel: 'Médio',
+      enunciado: 'No reconhecimento inicial de uma provisão para desmantelamento de ativos (ex: desmobilização de uma plataforma), o valor da provisão deve ser contabilizado a débito de:',
+      alternativas: [
+        'Despesa Operacional no resultado imediatamente.',
+        'Ativo Imobilizado (custo do ativo).',
+        'Patrimônio Líquido.',
+        'Ativo Diferido.'
+      ],
+      correta: 1,
+      explicacao: 'O custo estimado de desmantelamento futuro é trazido a valor presente e adicionado ao custo do Ativo Imobilizado no momento da aquisição/instalação, sendo depreciado ao longo da vida útil do bem.'
+    }
+  ];
+
+  // Estado
+  let estado = { index: 0, respostas: Array(questoes.length).fill(null) };
+
+  // Elementos
+  const questionArea = document.getElementById('questionArea');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const summaryEl = document.getElementById('summary');
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const correctText = document.getElementById('correctText');
+  const insightsList = document.getElementById('insightsList');
+  const scoreEl = document.getElementById('score');
+  const weaknessesEl = document.getElementById('weaknesses');
+
+  // Inicialização
+  function init(){
+    const saved = localStorage.getItem('simulado_avancada_v1');
+    if(saved){
+      try{
+        const parsedState = JSON.parse(saved);
+        if(parsedState.respostas.length === questoes.length){
+            estado = parsedState;
+        }
+      }catch(e){
+        console.error("Erro ao carregar estado salvo:", e);
+      }
+    }
+    renderQuestion();
+    updateControls();
+    updateProgressUI();
+  }
+
+  function saveState(){localStorage.setItem('simulado_avancada_v1', JSON.stringify(estado));}
+
+  function renderQuestion(){
+    const q = questoes[estado.index];
+    questionArea.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="tag">ID ${q.id}</div>
+          <div style="font-weight:600;margin-top:8px">${q.categoria} — <small style='color:var(--muted)'>${q.nivel}</small></div>
+        </div>
+        <div style="text-align:right;color:var(--muted)">Questão ${estado.index+1} de ${questoes.length}</div>
+      </div>
+      <h3 style="margin-top:12px">${escapeHtml(q.enunciado)}</h3>
+      <div class="alternativas">
+        ${q.alternativas.map((alt, i)=>{
+          const selected = estado.respostas[estado.index] === i ? 'selected' : '';
+          return `<div class="alt ${selected}" data-index="${i}">${String.fromCharCode(65+i)}) ${escapeHtml(alt)}</div>`
+        }).join('')}
+      </div>
+      <div style="margin-top:10px;color:var(--muted);font-size:13px">${estado.respostas[estado.index] === null ? 'Você ainda não respondeu esta questão.' : 'Resposta marcada: ' + String.fromCharCode(65+estado.respostas[estado.index])}</div>
+    `;
+
+    document.querySelectorAll('.alt').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const choice = Number(el.getAttribute('data-index'));
+        estado.respostas[estado.index] = choice;
+        saveState();
+        renderQuestion();
+        updateProgressUI();
+      });
+    });
+  }
+
+  function updateControls(){
+    prevBtn.disabled = estado.index === 0;
+    nextBtn.disabled = estado.index === questoes.length-1;
+  }
+
+  prevBtn.addEventListener('click', ()=>{ if(estado.index>0){estado.index--; saveState(); renderQuestion(); updateControls();}});
+  nextBtn.addEventListener('click', ()=>{ if(estado.index<questoes.length-1){estado.index++; saveState(); renderQuestion(); updateControls();}});
+  resetBtn.addEventListener('click', ()=>{ if(confirm('Reiniciar respostas e progresso?')){estado = {index:0,respostas:Array(questoes.length).fill(null)}; saveState(); location.reload();}});
+
+  submitBtn.addEventListener('click', ()=>{
+    const naoRespondidas = estado.respostas.filter(r=>r===null).length;
+    if(naoRespondidas>0){
+      if(!confirm(`Você deixou ${naoRespondidas} questão(ões) em branco. Deseja enviar mesmo assim?`)) return;
+    }
+    computeResults();
+  });
+
+  function computeResults(){
+    const total = questoes.length;
+    let corretas = 0;
+    const errosPorCategoria = {};
+    const detalhes = [];
+
+    questoes.forEach((q,i)=>{
+      const resp = estado.respostas[i];
+      const isCorrect = resp === q.correta;
+      if(isCorrect) corretas++;
+      else errosPorCategoria[q.categoria] = (errosPorCategoria[q.categoria]||0)+1;
+
+      detalhes.push({q,resp,isCorrect});
+    });
+
+    const insights = [];
+    if(corretas===total) insights.push('Excelente! Domínio total dos conceitos avançados.');
+    else if(corretas/total >= 0.7) insights.push('Muito bom! Você tem uma base sólida na Lei 6.404/76 e CPCs.');
+    else if(corretas/total >= 0.5) insights.push('Bom começo, mas revise as definições de Ágio e regras do JCP.');
+    else insights.push('Atenção aos conceitos básicos de Investimentos e Passivos. Revisão teórica recomendada.');
+    
+    const weaknesses = Object.keys(errosPorCategoria).map(cat=>({categoria:cat, erros:errosPorCategoria[cat], recomendacao: recomendacaoPorCategoria(cat)}));
+
+    summaryEl.style.display='grid';
+    const pct = Math.round((estado.respostas.filter(r=>r!==null).length/total)*100);
+    progressBar.style.width = pct + '%';
+    progressText.textContent = `${estado.respostas.filter(r=>r!==null).length} / ${total} respondidas`;
+    correctText.textContent = `${corretas} corretas`;
+    insightsList.innerHTML = insights.map(i=>`<div>• ${escapeHtml(i)}</div>`).join('');
+    scoreEl.textContent = `${corretas} / ${total}`;
+    if(weaknesses.length===0){ weaknessesEl.innerHTML = '<div style="color:var(--success)">Nenhuma fraqueza identificada. Parabéns!</div>'; }
+    else{
+      weaknessesEl.innerHTML = weaknesses.map(w=>`<div style="margin-bottom:8px"><strong>${escapeHtml(w.categoria)}</strong> — Erros: ${w.erros}<div style="color:var(--muted);font-size:13px;margin-top:4px">${escapeHtml(w.recomendacao)}</div></div>`).join('');
+    }
+
+    const detalhesHtml = detalhes.map((d,idx)=>{
+      const status = d.isCorrect ? '✔ Correta' : '✖ Incorreta';
+      const statusColor = d.isCorrect ? 'var(--success)' : 'var(--danger)';
+      let suaRespostaHtml = '<em>Sem resposta</em>';
+      if(d.resp !== null) {
+        suaRespostaHtml = `${String.fromCharCode(65+d.resp)}) ${escapeHtml(questoes[idx].alternativas[d.resp])}`;
+      }
+
+      return `
+        <div style="margin-top:12px;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);">
+          <div style="font-weight:600">Q${questoes[idx].id} — ${questoes[idx].categoria} <small style='color:var(--muted)'>(${questoes[idx].nivel})</small></div>
+          <div style="margin-top:6px">${escapeHtml(questoes[idx].enunciado)}</div>
+          <div style="margin-top:8px;color:${statusColor}">${status}</div>
+          <div style="margin-top:6px;color:var(--muted);font-size:13px">Sua resposta: ${suaRespostaHtml}</div>
+          <div style="margin-top:6px;color:var(--muted);font-size:13px">Gabarito: ${String.fromCharCode(65+questoes[idx].correta)}) ${escapeHtml(questoes[idx].alternativas[questoes[idx].correta])}</div>
+          <div style="margin-top:8px;padding:8px; border-left: 2px solid var(--accent); color:var(--muted);font-size:13px"><b>Explicação:</b> ${escapeHtml(questoes[idx].explicacao)}</div>
+        </div>
+      `;
+    }).join('');
+
+    const existing = document.getElementById('detContainer');
+    if(existing) existing.remove();
+    
+    const detailsContainer = document.createElement('div');
+    detailsContainer.className='card';
+    detailsContainer.style.marginTop='12px';
+    detailsContainer.id = 'detContainer';
+    detailsContainer.innerHTML = `<h3>Detalhamento das questões</h3>${detalhesHtml}`;
+    document.getElementById('app').appendChild(detailsContainer);
+
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+    submitBtn.style.display = 'none';
+    resetBtn.style.marginLeft = 'auto';
+  }
+
+  function recomendacaoPorCategoria(cat){
+    const dicas = {
+      'CPC 25 e Passivos': 'Revisar os conceitos de provisão vs passivo contingente e a classificação de passivos circulantes vs não circulantes (Lei 6.404).',
+      'Juros sobre Capital Próprio': 'Foque na natureza híbrida do JCP: despesa fiscal (dedutível) mas distribuição de lucro societária. Atente aos limites de cálculo.',
+      'Investimentos (MEP)': 'Estude os lançamentos do MEP (reconhecimento de lucro da investida e recebimento de dividendos) e o conceito de influência significativa (20%).',
+      'Ágio e Deságio': 'Diferencie Goodwill (ágio por rentabilidade futura) de Compra Vantajosa (deságio/ganho). Lembre-se que Goodwill não se amortiza, testa-se o impairment.'
+    };
+    return dicas[cat] || 'Revisar a teoria contábil específica deste tópico.';
+  }
+
+  function updateProgressUI(){
+    const total = questoes.length;
+    const filled = estado.respostas.filter(r=>r!==null).length;
+    const pct = filled > 0 ? Math.round((filled/total)*100) : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (progressText) progressText.textContent = `${filled} / ${total} respondidas`;
+    if (correctText) correctText.textContent = `-`;
+  }
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]}); }
+
+  init();
+  </script>
+</body>
+</html>
+
